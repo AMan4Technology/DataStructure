@@ -6,6 +6,8 @@ import (
     "DataStructure/internal"
 )
 
+const SerializerOfNode = "binaryTree.Node"
+
 type Node struct {
     Value       Value
     Left, Right *Node
@@ -13,6 +15,10 @@ type Node struct {
 
 func (n *Node) Compare(b internal.Comparable) int8 {
     return n.Value.Compare(b.(*Node).Value)
+}
+
+func (n *Node) IsLeaf() bool {
+    return n.Left == nil && n.Right == nil
 }
 
 func (n *Node) LeftDFS() (parent, left *Node) {
@@ -81,6 +87,10 @@ func (n *Node) DeleteRight() (node *Node) {
     parentOfLeft.Left, n.Right = nil, left
     left.Left, left.Right, node.Left, node.Right = node.Left, node.Right, nil, nil
     return
+}
+
+func (n *Node) SerializerName() string {
+    return SerializerOfNode
 }
 
 type Value = internal.Comparable

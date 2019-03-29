@@ -3,18 +3,18 @@ package trees
 import "DataStructure/tree/binary"
 
 // PreOrder 前序遍历树中所有节点
-func PreOrder(tree binarytree.Tree, callback func(*binarytree.Node) bool) {
-    preOrder(tree.Root(), callback)
+func PreOrder(root *binarytree.Node, callback func(*binarytree.Node) bool) {
+    preOrder(root, callback)
 }
 
 // InOrder 中序遍历树中所有节点
-func InOrder(tree binarytree.Tree, callback func(*binarytree.Node) bool) {
-    inOrder(tree.Root(), callback)
+func InOrder(root *binarytree.Node, callback func(*binarytree.Node) bool) {
+    inOrder(root, callback)
 }
 
 // PostOrder 后序遍历树中所有节点
-func PostOrder(tree binarytree.Tree, callback func(*binarytree.Node) bool) {
-    postOrder(tree.Root(), callback)
+func PostOrder(root *binarytree.Node, callback func(*binarytree.Node) bool) {
+    postOrder(root, callback)
 }
 
 func preOrder(node *binarytree.Node, callback func(*binarytree.Node) bool) bool {
