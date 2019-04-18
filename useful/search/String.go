@@ -67,7 +67,7 @@ func goodSuffixRule(iOfSub, lenOfSuffix int, indexWithSuffix map[int]int, prefix
         return 1
     }
     if index, ok := indexWithSuffix[lenOfSuffix]; ok {
-        return iOfSub - index + 1
+        return iOfSub + 1 - index
     }
     for j := lenOfSuffix - 1; j >= 1; j-- {
         if prefixWithSuffix[j] {
