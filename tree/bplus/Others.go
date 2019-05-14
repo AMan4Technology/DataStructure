@@ -1,9 +1,8 @@
 package bplustree
 
 import (
-    common2 "DataStructure/useful/common"
-
     "DataStructure/internal"
+    "DataStructure/useful/common"
 )
 
 type DataValue = string
@@ -14,7 +13,7 @@ func (k keys) Len() int {
     return len(k)
 }
 
-func (k keys) Compare(i int, value common2.Value) int8 {
+func (k keys) Compare(i int, value common.Value) int8 {
     return k[i].Compare(value.(internal.Comparable))
 }
 

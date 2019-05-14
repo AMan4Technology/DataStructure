@@ -13,7 +13,7 @@ import (
 
 func newNode(num int) *Node {
     return &Node{
-        common: common{
+        base: base{
             num:  num,
             keys: make(keys, 0, num)}}
 }
@@ -24,7 +24,7 @@ func newDataNode(node *LeafNode) *doublylist.Node {
 
 func newLeafNode(num int) *LeafNode {
     return &LeafNode{
-        common: common{
+        base: base{
             num:  num,
             keys: make(keys, 0, num+1)},
         data: make([]DataValue, 0, num)}
@@ -35,7 +35,7 @@ func leafNodeOf(node *doublylist.Node) *LeafNode {
 }
 
 type Node struct {
-    common // 子节点个数
+    base // 子节点个数
     children  []*Node
     dataNodes []*doublylist.Node
 }
@@ -112,7 +112,7 @@ func (n *Node) deleteNode(index int) {
 }
 
 type LeafNode struct {
-    common // 当数据存储在磁盘上时，尽可能使得每次读取的数据小于一页
+    base // 当数据存储在磁盘上时，尽可能使得每次读取的数据小于一页
     data []DataValue
 }
 
@@ -169,48 +169,48 @@ func (LeafNode) Compare(b internal.Comparable) int8 {
     return compare.EqualTo
 }
 
-type common struct {
+type base struct {
     num  int
     keys keys
 }
 
-func (c common) Num() int {
+func (c base) Num() int {
     return c.num
 }
 
-func (c common) MinNum() int {
+func (c base) MinNum() int {
     return c.num / 2
 }
 
-func (c common) MaxNum() int {
+func (c base) MaxNum() int {
     return c.num
 }
 
-func (c common) Len() int {
+func (c base) Len() int {
     return c.keys.Len()
 }
 
-func (c common) Empty() bool {
+func (c base) Empty() bool {
     return c.Len() == 0
 }
 
-func (c common) Full() bool {
+func (c base) Full() bool {
     return c.Len() == c.MaxNum()
 }
 
-func (c common) Overflow() bool {
+func (c base) Overflow() bool {
     return c.Len() > c.MaxNum()
 }
 
-func (c common) TooLittle() bool {
+func (c base) TooLittle() bool {
     return c.Len() < c.MinNum()
 }
 
-func (c common) Find(k key) (exist bool, index int) {
+func (c base) Find(k key) (exist bool, index int) {
     return search.BinarySearch(c.keys, k)
 }
 
-func (c *common) insertKey(index int, k key) {
+func (c *base) insertKey(index int, k key) {
     if index < 0 || index > c.Len() {
         return
     }
@@ -221,7 +221,7 @@ func (c *common) insertKey(index int, k key) {
     c.keys[index] = k
 }
 
-func (c *common) deleteKey(index int) {
+func (c *base) deleteKey(index int) {
     if index < 0 || index >= c.Len() {
         return
     }
