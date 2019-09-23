@@ -38,28 +38,28 @@ func indexWithRuneOf(rs []rune) (indexWithRune map[rune]int) {
     return
 }
 
-func badCharRule(iOfSub int, r rune, indexWithRune map[rune]int) int {
-    if index, ok := indexWithRune[r]; ok {
-        return iOfSub - index
-    }
-    return iOfSub + 1
-}
-
 func indexWithSuffixOf(rs []rune) (indexWithSuffix map[int]int, prefixWithSuffix map[int]bool) {
     length := len(rs)
     indexWithSuffix = make(map[int]int, length-1)
     prefixWithSuffix = make(map[int]bool, length-1)
 next:
-    for i := 0; i < length-1; i++ {
-        for k := 1; k <= i+1; k++ {
-            if rs[i+1-k] != rs[length-k] {
+    for i := 1; i < length; i++ {
+        for k := 1; k <= i; k++ {
+            if rs[i-k] != rs[length-k] {
                 continue next
             }
-            indexWithSuffix[k] = i + 1 - k
+            indexWithSuffix[k] = i - k
         }
-        prefixWithSuffix[i+1] = true
+        prefixWithSuffix[i] = true
     }
     return
+}
+
+func badCharRule(iOfSub int, r rune, indexWithRune map[rune]int) int {
+    if index, ok := indexWithRune[r]; ok {
+        return iOfSub - index
+    }
+    return iOfSub + 1
 }
 
 func goodSuffixRule(iOfSub, lenOfSuffix int, indexWithSuffix map[int]int, prefixWithSuffix map[int]bool) int {
