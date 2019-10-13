@@ -6,8 +6,6 @@ import (
     "github.com/AMan4Technology/DataStructure/internal"
 )
 
-const SerializerOfNode = "binaryTree.Node"
-
 type Node struct {
     Value       Value
     Left, Right *Node
@@ -87,10 +85,6 @@ func (n *Node) DeleteRight() (node *Node) {
     parentOfLeft.Left, n.Right = nil, left
     left.Left, left.Right, node.Left, node.Right = node.Left, node.Right, nil, nil
     return
-}
-
-func (n *Node) SerializerName() string {
-    return SerializerOfNode
 }
 
 type Value = internal.Comparable

@@ -2,42 +2,49 @@ package trees
 
 import (
     "fmt"
-    "strconv"
+    "reflect"
     "testing"
+
+    "github.com/AMan4Technology/Serialize"
+    "github.com/AMan4Technology/Serialize/codec"
 
     "github.com/AMan4Technology/DataStructure/internal"
     "github.com/AMan4Technology/DataStructure/tree/binary"
     "github.com/AMan4Technology/DataStructure/useful/compare"
-    "github.com/AMan4Technology/DataStructure/useful/serialize"
 )
 
-func TestNodeSerializer(t *testing.T) {
-    root := &binarytree.Node{Value: val(1)}
-    left := &binarytree.Node{Value: val(2)}
-    right := &binarytree.Node{Value: val(3)}
-    rightLeft := &binarytree.Node{Value: val(4)}
-    rightRight := &binarytree.Node{Value: val(5)}
+func TestBinaryTreeSerializer_Serialize(t *testing.T) {
+    var (
+        root       = &binarytree.Node{Value: val(1)}
+        tree       = binarytree.New(root)
+        left       = &binarytree.Node{Value: val(2)}
+        right      = &binarytree.Node{Value: val(3)}
+        rightLeft  = &binarytree.Node{Value: val(4)}
+        rightRight = &binarytree.Node{Value: val(5)}
+    )
     root.Left = left
     root.Right = right
     right.Left = rightLeft
     right.Right = rightRight
-    data, _ := serialize.Serialize(root)
-    fmt.Println(data)
-    root2, _ := serialize.Deserialize(data)
-    fmt.Println(root == root2.(*binarytree.Node))
-    fmt.Println(serialize.Serialize(root2))
-    PreOrder(root2.(*binarytree.Node), func(node *binarytree.Node) bool {
+    PreOrder(tree.Root(), func(node *binarytree.Node) bool {
         fmt.Println(node.Value)
         return true
     })
-    fmt.Println(serialize.NumOfSerializers())
-    serialize.RangeSerializers(func(name string) bool {
-        fmt.Println(name)
+    data, _ := serialize.Serialize(tree, codec.String, "tree", "")
+    fmt.Println(data)
+}
+
+func TestBinaryTreeSerializer_Deserialize(t *testing.T) {
+    treeValue, _, err := serialize.Deserialize(`github.com/AMan4Technology/DataStructure/tree/binary.Tree|tree|github.com/AMan4Technology/Serialize/internal.StringSlice|nodes|11|60|github.com/AMan4Technology/DataStructure/useful/trees.val||160|github.com/AMan4Technology/DataStructure/useful/trees.val||25|[nil]5|[nil]60|github.com/AMan4Technology/DataStructure/useful/trees.val||360|github.com/AMan4Technology/DataStructure/useful/trees.val||45|[nil]5|[nil]60|github.com/AMan4Technology/DataStructure/useful/trees.val||55|[nil]5|[nil]`, codec.String, "")
+    tree := treeValue.(binarytree.Tree)
+    if err != nil {
+        fmt.Println(err)
+    }
+    PreOrder(tree.Root(), func(node *binarytree.Node) bool {
+        fmt.Println(node.Value)
         return true
     })
 }
-
-const SerializerOfVal = "test.integer"
 
 type val int
 
@@ -50,21 +57,6 @@ func (v val) Compare(b internal.Comparable) int8 {
     return compare.EqualTo
 }
 
-func (val) SerializerName() string {
-    return SerializerOfVal
-}
-
 func init() {
-    _ = serialize.Register(SerializerOfVal, intValSerializer{}, false)
-}
-
-type intValSerializer struct{}
-
-func (intValSerializer) Serialize(value serialize.Serializable) (data string, err error) {
-    return strconv.Itoa(int(value.(val))), nil
-}
-
-func (intValSerializer) Deserialize(data string) (value serialize.Serializable, err error) {
-    i, err := strconv.Atoi(data)
-    return val(i), err
+    _ = serialize.Register(reflect.TypeOf(val(0)), nil, true)
 }
