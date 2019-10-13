@@ -1,11 +1,11 @@
 package search
 
 import (
-    "DataStructure/useful/common"
+    "github.com/AMan4Technology/DataStructure/useful/common"
 
-    "DataStructure/internal"
+    "github.com/AMan4Technology/DataStructure/internal"
 
-    "DataStructure/internal/example"
+    "github.com/AMan4Technology/DataStructure/internal/example"
 
     "fmt"
     "testing"

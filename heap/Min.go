@@ -1,7 +1,7 @@
 package heap
 
 import (
-    "DataStructure/useful/compare"
+    "github.com/AMan4Technology/DataStructure/useful/compare"
 )
 
 func NewMin(capacity int) (heap Min) {

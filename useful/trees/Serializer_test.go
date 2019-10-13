@@ -5,10 +5,10 @@ import (
     "strconv"
     "testing"
 
-    "DataStructure/internal"
-    "DataStructure/tree/binary"
-    "DataStructure/useful/compare"
-    "DataStructure/useful/serialize"
+    "github.com/AMan4Technology/DataStructure/internal"
+    "github.com/AMan4Technology/DataStructure/tree/binary"
+    "github.com/AMan4Technology/DataStructure/useful/compare"
+    "github.com/AMan4Technology/DataStructure/useful/serialize"
 )
 
 func TestNodeSerializer(t *testing.T) {

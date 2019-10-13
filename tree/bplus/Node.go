@@ -1,14 +1,14 @@
 package bplustree
 
 import (
-    common2 "DataStructure/useful/common"
+    common2 "github.com/AMan4Technology/DataStructure/useful/common"
 
-    "DataStructure/useful/compare"
+    "github.com/AMan4Technology/DataStructure/useful/compare"
 
-    "DataStructure/useful/search"
+    "github.com/AMan4Technology/DataStructure/useful/search"
 
-    "DataStructure/internal"
-    "DataStructure/list/doubly"
+    "github.com/AMan4Technology/DataStructure/internal"
+    "github.com/AMan4Technology/DataStructure/list/doubly"
 )
 
 func newNode(num int) *Node {

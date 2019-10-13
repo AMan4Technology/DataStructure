@@ -3,7 +3,7 @@ package arrayqueue
 import (
     "errors"
 
-    "DataStructure/useful/common"
+    "github.com/AMan4Technology/DataStructure/useful/common"
 )
 
 func New(capacity int) Queue {

@@ -1,11 +1,11 @@
 package bplustree
 
 import (
-    "DataStructure/useful/compare"
+    "github.com/AMan4Technology/DataStructure/useful/compare"
 
-    common2 "DataStructure/useful/common"
+    common2 "github.com/AMan4Technology/DataStructure/useful/common"
 
-    "DataStructure/list/doubly"
+    "github.com/AMan4Technology/DataStructure/list/doubly"
 )
 
 func New(numOfSubNode, numOfLeafData int) Tree {

@@ -1,9 +1,9 @@
 package search
 
 import (
-    "DataStructure/useful/common"
+    "github.com/AMan4Technology/DataStructure/useful/common"
 
-    "DataStructure/useful/compare"
+    "github.com/AMan4Technology/DataStructure/useful/compare"
 )
 
 func BinarySearch(data Searchable, value common.Value) (exist bool, index int) {

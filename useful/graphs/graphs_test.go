@@ -4,7 +4,7 @@ import (
     "fmt"
     "testing"
 
-    "DataStructure/graph"
+    "github.com/AMan4Technology/DataStructure/graph"
 )
 
 func TestPathWithAstar(t *testing.T) {

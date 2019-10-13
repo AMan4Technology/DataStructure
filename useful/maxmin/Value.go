@@ -1,9 +1,9 @@
 package maxmin
 
 import (
-    "DataStructure/useful/compare"
+    "github.com/AMan4Technology/DataStructure/useful/compare"
 
-    "DataStructure/internal"
+    "github.com/AMan4Technology/DataStructure/internal"
 )
 
 func OfValues(base Value, others ...Value) (max, min Value) {

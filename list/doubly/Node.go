@@ -1,8 +1,8 @@
 package doublylist
 
 import (
-    "DataStructure/internal"
-    "DataStructure/internal/example"
+    "github.com/AMan4Technology/DataStructure/internal"
+    "github.com/AMan4Technology/DataStructure/internal/example"
 )
 
 type Value = internal.Comparable

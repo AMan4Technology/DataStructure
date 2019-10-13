@@ -1,9 +1,9 @@
 package trees
 
 import (
-    "DataStructure/tree/binary"
-    "DataStructure/useful/common"
-    "DataStructure/useful/serialize"
+    "github.com/AMan4Technology/DataStructure/tree/binary"
+    "github.com/AMan4Technology/DataStructure/useful/common"
+    "github.com/AMan4Technology/DataStructure/useful/serialize"
 )
 
 func init() {

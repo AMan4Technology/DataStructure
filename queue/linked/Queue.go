@@ -1,9 +1,9 @@
 package linkedqueue
 
 import (
-    "DataStructure/useful/common"
+    "github.com/AMan4Technology/DataStructure/useful/common"
 
-    "DataStructure/list/linked"
+    "github.com/AMan4Technology/DataStructure/list/linked"
 )
 
 func New() Queue {

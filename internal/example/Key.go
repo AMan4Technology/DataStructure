@@ -1,6 +1,6 @@
 package example
 
-import "DataStructure/internal"
+import "github.com/AMan4Technology/DataStructure/internal"
 
 func KOf(key string) internal.K {
     return k(key)

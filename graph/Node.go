@@ -1,7 +1,7 @@
 package graph
 
 import (
-    "DataStructure/useful/common"
+    "github.com/AMan4Technology/DataStructure/useful/common"
 )
 
 func newNode(key string, value NodeValue) *Node {

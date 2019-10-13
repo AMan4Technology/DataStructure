@@ -1,6 +1,6 @@
 package example
 
-import "DataStructure/internal"
+import "github.com/AMan4Technology/DataStructure/internal"
 
 func ComparableOf(value float64) internal.Comparable {
     return ComparableValOf(ValOf(value))

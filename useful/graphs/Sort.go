@@ -1,8 +1,8 @@
 package graphs
 
 import (
-    "DataStructure/graph"
-    "DataStructure/queue/array"
+    "github.com/AMan4Technology/DataStructure/graph"
+    "github.com/AMan4Technology/DataStructure/queue/array"
 )
 
 func TopoSort(g graph.Graph, callback func(key string, node *graph.Node) bool) {

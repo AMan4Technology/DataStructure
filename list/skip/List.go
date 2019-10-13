@@ -1,9 +1,9 @@
 package skiplist
 
 import (
-    "DataStructure/useful/compare"
+    "github.com/AMan4Technology/DataStructure/useful/compare"
 
-    "DataStructure/list/linked"
+    "github.com/AMan4Technology/DataStructure/list/linked"
 )
 
 func New(num int) (l List) {

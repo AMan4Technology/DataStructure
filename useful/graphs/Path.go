@@ -3,9 +3,9 @@ package graphs
 import (
     "math"
 
-    . "DataStructure/graph"
-    "DataStructure/heap"
-    "DataStructure/internal/example"
+    . "github.com/AMan4Technology/DataStructure/graph"
+    "github.com/AMan4Technology/DataStructure/heap"
+    "github.com/AMan4Technology/DataStructure/internal/example"
 )
 
 func ShortestPath(g Graph, start, end, name string) (path []string, min float64) {

@@ -1,9 +1,9 @@
 package graphs
 
 import (
-	"DataStructure/queue/array"
+	"github.com/AMan4Technology/DataStructure/queue/array"
 
-	. "DataStructure/graph"
+	. "github.com/AMan4Technology/DataStructure/graph"
 )
 
 func BFS(g Graph, start string, callback func(key string, node *Node) bool) {

@@ -1,7 +1,7 @@
 package binarytree
 
 import (
-    "DataStructure/useful/compare"
+    "github.com/AMan4Technology/DataStructure/useful/compare"
 )
 
 func NewOrderTree(root *Node) OrderTree {

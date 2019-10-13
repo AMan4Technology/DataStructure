@@ -1,7 +1,7 @@
 package search
 
 import (
-    "DataStructure/useful/common"
+    "github.com/AMan4Technology/DataStructure/useful/common"
 )
 
 type Searchable interface {

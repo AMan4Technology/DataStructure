@@ -1,11 +1,11 @@
 package linkedqueue
 
 import (
-    "DataStructure/useful/common"
+    "github.com/AMan4Technology/DataStructure/useful/common"
 
-    "DataStructure/useful/compare"
+    "github.com/AMan4Technology/DataStructure/useful/compare"
 
-    . "DataStructure/internal"
+    . "github.com/AMan4Technology/DataStructure/internal"
 )
 
 func newNodeValue(value common.Value) nodeValue {

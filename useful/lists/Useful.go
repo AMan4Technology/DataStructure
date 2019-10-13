@@ -1,10 +1,10 @@
 package lists
 
 import (
-    "DataStructure/list/doubly"
-    "DataStructure/list/linked"
-    "DataStructure/useful/lists/doublylists"
-    "DataStructure/useful/lists/linkedlists"
+    "github.com/AMan4Technology/DataStructure/list/doubly"
+    "github.com/AMan4Technology/DataStructure/list/linked"
+    "github.com/AMan4Technology/DataStructure/useful/lists/doublylists"
+    "github.com/AMan4Technology/DataStructure/useful/lists/linkedlists"
 )
 
 func MergeTwoList(l1, l2 List) List {

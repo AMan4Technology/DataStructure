@@ -4,7 +4,7 @@ import (
     "fmt"
     "testing"
 
-    "DataStructure/internal/example"
+    "github.com/AMan4Technology/DataStructure/internal/example"
 )
 
 func TestTree(t *testing.T) {

@@ -1,7 +1,7 @@
 package linkedlist
 
 import (
-    "DataStructure/useful/compare"
+    "github.com/AMan4Technology/DataStructure/useful/compare"
 )
 
 func New() List {

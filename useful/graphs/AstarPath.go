@@ -1,8 +1,8 @@
 package graphs
 
 import (
-	"DataStructure/graph"
-	"DataStructure/graph/astar"
+	"github.com/AMan4Technology/DataStructure/graph"
+	"github.com/AMan4Technology/DataStructure/graph/astar"
 )
 
 func PathWithAstar(g graph.Graph, start, end, name string) (path []string, min float64) {

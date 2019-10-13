@@ -3,7 +3,7 @@ package binarytree
 import (
     "errors"
 
-    "DataStructure/internal"
+    "github.com/AMan4Technology/DataStructure/internal"
 )
 
 const SerializerOfNode = "binaryTree.Node"

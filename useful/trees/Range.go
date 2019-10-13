@@ -1,6 +1,6 @@
 package trees
 
-import "DataStructure/tree/binary"
+import "github.com/AMan4Technology/DataStructure/tree/binary"
 
 // PreOrder 前序遍历树中所有节点
 func PreOrder(root *binarytree.Node, callback func(*binarytree.Node) bool) {

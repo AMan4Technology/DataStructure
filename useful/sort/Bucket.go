@@ -1,7 +1,7 @@
 package sort
 
 import (
-	"DataStructure/useful/maxmin"
+	"github.com/AMan4Technology/DataStructure/useful/maxmin"
 )
 
 func Bucket(data []int) {

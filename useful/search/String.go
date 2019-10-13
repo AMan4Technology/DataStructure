@@ -1,6 +1,6 @@
 package search
 
-import "DataStructure/useful/maxmin"
+import "github.com/AMan4Technology/DataStructure/useful/maxmin"
 
 func BM(main, sub []rune, callback func(index int) bool) {
     var (

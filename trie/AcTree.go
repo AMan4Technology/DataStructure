@@ -1,6 +1,6 @@
 package trie
 
-import "DataStructure/queue/array"
+import "github.com/AMan4Technology/DataStructure/queue/array"
 
 func NewAc() AcTree {
     return AcTree{Tree: &Tree{root: newNode("")}}

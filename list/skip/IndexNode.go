@@ -1,8 +1,8 @@
 package skiplist
 
 import (
-    "DataStructure/internal"
-    "DataStructure/list/linked"
+    "github.com/AMan4Technology/DataStructure/internal"
+    "github.com/AMan4Technology/DataStructure/list/linked"
 )
 
 type Value = internal.Comparable

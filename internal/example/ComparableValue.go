@@ -1,8 +1,8 @@
 package example
 
 import (
-    "DataStructure/internal"
-    "DataStructure/useful/compare"
+    "github.com/AMan4Technology/DataStructure/internal"
+    "github.com/AMan4Technology/DataStructure/useful/compare"
 )
 
 func ComparableValOf(val internal.Val) internal.ComparableVal {

@@ -3,7 +3,7 @@ package astar
 import (
     "math"
 
-    "DataStructure/graph"
+    "github.com/AMan4Technology/DataStructure/graph"
 )
 
 func NewNodeValue(x, y float64, value graph.NodeValue) graph.NodeValue {

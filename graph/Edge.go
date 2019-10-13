@@ -1,8 +1,8 @@
 package graph
 
 import (
-	"DataStructure/internal"
-	"DataStructure/internal/example"
+	"github.com/AMan4Technology/DataStructure/internal"
+	"github.com/AMan4Technology/DataStructure/internal/example"
 )
 
 func EdgeValueOf(value float64) EdgeValue {

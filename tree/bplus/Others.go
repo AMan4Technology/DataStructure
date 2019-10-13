@@ -1,8 +1,8 @@
 package bplustree
 
 import (
-    "DataStructure/internal"
-    "DataStructure/useful/common"
+    "github.com/AMan4Technology/DataStructure/internal"
+    "github.com/AMan4Technology/DataStructure/useful/common"
 )
 
 type DataValue = string
