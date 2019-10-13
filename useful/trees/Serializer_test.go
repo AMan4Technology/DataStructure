@@ -13,6 +13,10 @@ import (
     "github.com/AMan4Technology/DataStructure/useful/compare"
 )
 
+func init() {
+    _ = serialize.Register(reflect.TypeOf(val(0)), nil, true)
+}
+
 func TestBinaryTreeSerializer_Serialize(t *testing.T) {
     var (
         root       = &binarytree.Node{Value: val(1)}
@@ -55,8 +59,4 @@ func (v val) Compare(b internal.Comparable) int8 {
         return compare.MoreThan
     }
     return compare.EqualTo
-}
-
-func init() {
-    _ = serialize.Register(reflect.TypeOf(val(0)), nil, true)
 }
