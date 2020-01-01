@@ -14,7 +14,7 @@ func (t Tree) Len() int {
 }
 
 func (t Tree) Find(word string) bool {
-    if curr := t.find(word); curr != nil {
+    if _, curr := t.find(word); curr != nil {
         return curr.isWord
     }
     return false
@@ -24,7 +24,7 @@ func (t Tree) Words(prefix string) []string {
     if prefix == "" {
         return t.AllWords()
     }
-    if curr := t.find(prefix); curr != nil {
+    if _, curr := t.find(prefix); curr != nil {
         return curr.words(prefix)
     }
     return nil
@@ -35,7 +35,7 @@ func (t Tree) RangeWords(prefix string, callback func(word string) bool) {
         t.RangeAllWords(callback)
         return
     }
-    if curr := t.find(prefix); curr != nil {
+    if _, curr := t.find(prefix); curr != nil {
         curr.rangeWords(prefix, func(word string, curr *node) bool {
             return callback(word)
         })
@@ -65,7 +65,7 @@ func (t *Tree) Save(word string) {
 }
 
 func (t *Tree) Remove(word string, deleteNode bool) {
-    curr := t.find(word)
+    prev, curr := t.find(word)
     if curr == nil {
         return
     }
@@ -74,17 +74,16 @@ func (t *Tree) Remove(word string, deleteNode bool) {
     }
     curr.isWord = false
     t.length--
-    if !deleteNode || !curr.canRemove() {
-        return
+    if deleteNode && curr.canRemove() {
+        prev.remove(curr.value)
     }
-    t.removeBranch(word)
 }
 
 func (t *Tree) RemovePrefix(prefix string, deleteNode bool) (words []string) {
     if prefix == "" {
         return t.RemoveAll(deleteNode)
     }
-    curr := t.find(prefix)
+    prec, curr := t.find(prefix)
     if curr == nil {
         return nil
     }
@@ -95,7 +94,7 @@ func (t *Tree) RemovePrefix(prefix string, deleteNode bool) (words []string) {
         return true
     })
     if deleteNode {
-        t.removeBranch(prefix)
+        prec.remove(curr.value)
     }
     return
 }
@@ -114,31 +113,16 @@ func (t *Tree) RemoveAll(deleteNode bool) (words []string) {
     return
 }
 
-func (t Tree) find(word string) (curr *node) {
+func (t Tree) find(word string) (prev, curr *node) {
     if word == "" {
-        return nil
+        return nil, nil
     }
     curr = t.root
     for _, r := range []rune(word) {
-        curr = curr.child(string(r))
+        prev, curr = curr, curr.child(string(r))
         if curr == nil {
-            return nil
+            return
         }
     }
     return
-}
-
-func (t *Tree) removeBranch(prefix string) {
-    var (
-        parent = t.root
-        curr   *node
-    )
-    for _, r := range []rune(prefix) {
-        curr = parent.child(string(r))
-        if curr.canRemove() {
-            parent.remove(string(r))
-            return
-        }
-        parent = curr
-    }
 }
