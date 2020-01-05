@@ -1,4 +1,4 @@
-package binarytree
+package binary_tree
 
 func New(root *Node) Tree {
     return Tree{root: root}

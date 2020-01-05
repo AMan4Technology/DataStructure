@@ -17,7 +17,7 @@ func TopoSort(g graph.Graph, callback func(key string, node *graph.Node) bool) {
         })
         return true
     })
-    queue := arrayqueue.New(1 << 6)
+    queue := array_queue.New(1 << 6)
     for key, num := range inDegrees {
         if num == 0 {
             queue.Enqueue(key, true)

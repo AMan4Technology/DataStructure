@@ -1,4 +1,4 @@
-package doublylist
+package doubly_list
 
 func NewCircular() (l Circular) {
     l = Circular{New()}

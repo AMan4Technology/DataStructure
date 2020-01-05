@@ -1,23 +1,23 @@
-package skiplist
+package skip_list
 
 import (
     "github.com/AMan4Technology/DataStructure/internal"
-    "github.com/AMan4Technology/DataStructure/list/linked"
+    linked_list "github.com/AMan4Technology/DataStructure/list/linked"
 )
 
 type Value = internal.Comparable
 
-func newIndexNode(value Value, down *linkedlist.Node) *indexNode {
+func newIndexNode(value Value, down *linked_list.Node) *indexNode {
     return &indexNode{value: value, down: down}
 }
 
-func indexNodeOf(node *linkedlist.Node) *indexNode {
+func indexNodeOf(node *linked_list.Node) *indexNode {
     return node.Value.(*indexNode)
 }
 
 type indexNode struct {
     value Value
-    down  *linkedlist.Node
+    down  *linked_list.Node
 }
 
 func (i *indexNode) Compare(b internal.Comparable) int8 {

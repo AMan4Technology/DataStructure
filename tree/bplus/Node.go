@@ -1,4 +1,4 @@
-package bplustree
+package bplus_tree
 
 import (
     common2 "github.com/AMan4Technology/DataStructure/useful/common"
@@ -18,8 +18,8 @@ func newNode(num int) *Node {
             keys: make(keys, 0, num)}}
 }
 
-func newDataNode(node *LeafNode) *doublylist.Node {
-    return doublylist.NewNode(node)
+func newDataNode(node *LeafNode) *doubly_list.Node {
+    return doubly_list.NewNode(node)
 }
 
 func newLeafNode(num int) *LeafNode {
@@ -30,14 +30,14 @@ func newLeafNode(num int) *LeafNode {
         data: make([]DataValue, 0, num)}
 }
 
-func leafNodeOf(node *doublylist.Node) *LeafNode {
+func leafNodeOf(node *doubly_list.Node) *LeafNode {
     return node.Value.(*LeafNode)
 }
 
 type Node struct {
-    base // 子节点个数
+    base      // 子节点个数
     children  []*Node
-    dataNodes []*doublylist.Node
+    dataNodes []*doubly_list.Node
 }
 
 func (n Node) Len() int {
@@ -72,14 +72,14 @@ func (n *Node) split() (k key, node *Node) {
         n.children = n.children[:pivot+1]
     }
     if n.dataNodes != nil {
-        node.dataNodes = make([]*doublylist.Node, 0, node.num+1)
+        node.dataNodes = make([]*doubly_list.Node, 0, node.num+1)
         node.dataNodes = append(node.dataNodes, n.dataNodes[pivot+1:]...)
         n.dataNodes = n.dataNodes[:pivot+1]
     }
     return
 }
 
-func (n *Node) insertNode(index int, child *Node, dataNode *doublylist.Node) {
+func (n *Node) insertNode(index int, child *Node, dataNode *doubly_list.Node) {
     if index < 0 || index > n.Len() {
         return
     }

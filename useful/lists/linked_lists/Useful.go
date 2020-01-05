@@ -1,10 +1,10 @@
-package doublylists
+package linked_lists
 
 import (
     "github.com/AMan4Technology/DataStructure/useful/compare"
 
     "github.com/AMan4Technology/DataStructure/heap"
-    . "github.com/AMan4Technology/DataStructure/list/doubly"
+    . "github.com/AMan4Technology/DataStructure/list/linked"
 )
 
 func MergeTwoList(l1, l2 *List) *List {

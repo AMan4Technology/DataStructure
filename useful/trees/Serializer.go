@@ -11,17 +11,17 @@ import (
 )
 
 func init() {
-    _ = serialize.Register(reflect.TypeOf(binarytree.Tree{}), binaryTreeSerializer{}, false)
+    _ = serialize.Register(reflect.TypeOf(binary_tree.Tree{}), binaryTreeSerializer{}, false)
 }
 
 type binaryTreeSerializer struct{}
 
 func (binaryTreeSerializer) Serialize(value interface{}, tag string) (string, error) {
     var (
-        tree  = value.(binarytree.Tree)
+        tree  = value.(binary_tree.Tree)
         nodes serialize.StringSlice
     )
-    PreOrder(tree.Root(), func(node *binarytree.Node) bool {
+    PreOrder(tree.Root(), func(node *binary_tree.Node) bool {
         data, _ := serialize.Serialize(node.Value, codec.String, "", tag)
         nodes = append(nodes, data)
         if node.IsLeaf() {
@@ -35,29 +35,29 @@ func (binaryTreeSerializer) Serialize(value interface{}, tag string) (string, er
 func (binaryTreeSerializer) Deserialize(data string, tag string) (interface{}, error) {
     nodeSlice, _, err := serialize.Deserialize(data, codec.String, tag)
     if err != nil {
-        return binarytree.New(nil), err
+        return binary_tree.New(nil), err
     }
     var (
         nodes = nodeSlice.(serialize.StringSlice)
-        root  = new(binarytree.Node)
+        root  = new(binary_tree.Node)
     )
-    tree := binarytree.New(root)
+    tree := binary_tree.New(root)
     deserialize(root, nodes, new(int), tag)
     return tree, nil
 }
 
-func deserialize(node *binarytree.Node, nodes serialize.StringSlice, i *int, tag string) {
+func deserialize(node *binary_tree.Node, nodes serialize.StringSlice, i *int, tag string) {
     value, _, err := serialize.Deserialize(nodes[*i], codec.String, tag)
     if err != nil {
         return
     }
-    node.Value = value.(binarytree.Value)
+    node.Value = value.(binary_tree.Value)
     if *i++; nodes[*i] != common.Nil {
-        node.Left = new(binarytree.Node)
+        node.Left = new(binary_tree.Node)
         deserialize(node.Left, nodes, i, tag)
     }
     if *i++; nodes[*i] != common.Nil {
-        node.Right = new(binarytree.Node)
+        node.Right = new(binary_tree.Node)
         deserialize(node.Right, nodes, i, tag)
     }
 }

@@ -1,4 +1,4 @@
-package linkedlist
+package linked_list
 
 func NewCircular() (l Circular) {
     l = Circular{New()}

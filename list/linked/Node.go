@@ -1,4 +1,4 @@
-package linkedlist
+package linked_list
 
 import (
     "github.com/AMan4Technology/DataStructure/internal"

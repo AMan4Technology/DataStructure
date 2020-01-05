@@ -1,4 +1,4 @@
-package arrayqueue
+package array_queue
 
 import (
     "errors"

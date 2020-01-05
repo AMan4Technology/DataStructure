@@ -19,18 +19,18 @@ func init() {
 
 func TestBinaryTreeSerializer_Serialize(t *testing.T) {
     var (
-        root       = &binarytree.Node{Value: val(1)}
-        tree       = binarytree.New(root)
-        left       = &binarytree.Node{Value: val(2)}
-        right      = &binarytree.Node{Value: val(3)}
-        rightLeft  = &binarytree.Node{Value: val(4)}
-        rightRight = &binarytree.Node{Value: val(5)}
+        root       = &binary_tree.Node{Value: val(1)}
+        tree       = binary_tree.New(root)
+        left       = &binary_tree.Node{Value: val(2)}
+        right      = &binary_tree.Node{Value: val(3)}
+        rightLeft  = &binary_tree.Node{Value: val(4)}
+        rightRight = &binary_tree.Node{Value: val(5)}
     )
     root.Left = left
     root.Right = right
     right.Left = rightLeft
     right.Right = rightRight
-    PreOrder(tree.Root(), func(node *binarytree.Node) bool {
+    PreOrder(tree.Root(), func(node *binary_tree.Node) bool {
         fmt.Println(node.Value)
         return true
     })
@@ -40,11 +40,11 @@ func TestBinaryTreeSerializer_Serialize(t *testing.T) {
 
 func TestBinaryTreeSerializer_Deserialize(t *testing.T) {
     treeValue, _, err := serialize.Deserialize(`github.com/AMan4Technology/DataStructure/tree/binary.Tree|tree|github.com/AMan4Technology/Serialize/internal.StringSlice|nodes|11|60|github.com/AMan4Technology/DataStructure/useful/trees.val||160|github.com/AMan4Technology/DataStructure/useful/trees.val||25|[nil]5|[nil]60|github.com/AMan4Technology/DataStructure/useful/trees.val||360|github.com/AMan4Technology/DataStructure/useful/trees.val||45|[nil]5|[nil]60|github.com/AMan4Technology/DataStructure/useful/trees.val||55|[nil]5|[nil]`, codec.String, "")
-    tree := treeValue.(binarytree.Tree)
+    tree := treeValue.(binary_tree.Tree)
     if err != nil {
         fmt.Println(err)
     }
-    PreOrder(tree.Root(), func(node *binarytree.Node) bool {
+    PreOrder(tree.Root(), func(node *binary_tree.Node) bool {
         fmt.Println(node.Value)
         return true
     })

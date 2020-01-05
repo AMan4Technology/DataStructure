@@ -1,4 +1,4 @@
-package linkedqueue
+package linked_queue
 
 import (
     "github.com/AMan4Technology/DataStructure/useful/common"
@@ -7,11 +7,11 @@ import (
 )
 
 func New() Queue {
-    return Queue{linkedlist.New()}
+    return Queue{linked_list.New()}
 }
 
 type Queue struct {
-    list linkedlist.List
+    list linked_list.List
 }
 
 func (q Queue) Empty() bool {
@@ -27,7 +27,7 @@ func (q Queue) Head() common.Value {
 }
 
 func (q *Queue) Enqueue(value common.Value) {
-    q.list.Enqueue(linkedlist.NewNode(newNodeValue(value)))
+    q.list.Enqueue(linked_list.NewNode(newNodeValue(value)))
 }
 
 func (q *Queue) Dequeue() common.Value {

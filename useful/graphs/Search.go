@@ -12,7 +12,7 @@ func BFS(g Graph, start string, callback func(key string, node *Node) bool) {
 		return
 	}
 	var (
-		queue   = arrayqueue.New(startNode.NumOfOut())
+		queue   = array_queue.New(startNode.NumOfOut())
 		visited = make(map[string]bool, g.Len())
 	)
 	queue.Enqueue(start, true)

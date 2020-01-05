@@ -1,4 +1,4 @@
-package astar
+package astar_graph
 
 import (
     "math"

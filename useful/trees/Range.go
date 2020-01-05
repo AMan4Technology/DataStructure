@@ -3,21 +3,21 @@ package trees
 import "github.com/AMan4Technology/DataStructure/tree/binary"
 
 // PreOrder 前序遍历树中所有节点
-func PreOrder(root *binarytree.Node, callback func(*binarytree.Node) bool) {
+func PreOrder(root *binary_tree.Node, callback func(*binary_tree.Node) bool) {
     preOrder(root, callback)
 }
 
 // InOrder 中序遍历树中所有节点
-func InOrder(root *binarytree.Node, callback func(*binarytree.Node) bool) {
+func InOrder(root *binary_tree.Node, callback func(*binary_tree.Node) bool) {
     inOrder(root, callback)
 }
 
 // PostOrder 后序遍历树中所有节点
-func PostOrder(root *binarytree.Node, callback func(*binarytree.Node) bool) {
+func PostOrder(root *binary_tree.Node, callback func(*binary_tree.Node) bool) {
     postOrder(root, callback)
 }
 
-func preOrder(node *binarytree.Node, callback func(*binarytree.Node) bool) bool {
+func preOrder(node *binary_tree.Node, callback func(*binary_tree.Node) bool) bool {
     if node != nil && (!callback(node) ||
       !preOrder(node.Left, callback) ||
       !preOrder(node.Right, callback)) {
@@ -26,7 +26,7 @@ func preOrder(node *binarytree.Node, callback func(*binarytree.Node) bool) bool 
     return true
 }
 
-func inOrder(node *binarytree.Node, callback func(*binarytree.Node) bool) bool {
+func inOrder(node *binary_tree.Node, callback func(*binary_tree.Node) bool) bool {
     if node != nil && (!inOrder(node.Left, callback) ||
       !callback(node) ||
       !inOrder(node.Right, callback)) {
@@ -35,7 +35,7 @@ func inOrder(node *binarytree.Node, callback func(*binarytree.Node) bool) bool {
     return true
 }
 
-func postOrder(node *binarytree.Node, callback func(*binarytree.Node) bool) bool {
+func postOrder(node *binary_tree.Node, callback func(*binary_tree.Node) bool) bool {
     if node != nil && (!postOrder(node.Left, callback) ||
       !postOrder(node.Right, callback)) ||
       !callback(node) {

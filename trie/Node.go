@@ -1,18 +1,22 @@
 package trie
 
-func newNode(value string) *node {
+func newNode(value rune) *node {
     return &node{
         value:    value,
-        children: make(map[string]*node)}
+        children: make(map[rune]*node)}
 }
 
 type node struct {
-    value    string
+    value    rune
     isWord   bool
-    children map[string]*node
+    children map[rune]*node
 }
 
-func (n *node) child(value string) *node {
+func (n *node) toString() string {
+    return string(n.value)
+}
+
+func (n *node) child(value rune) *node {
     return n.children[value]
 }
 
@@ -32,10 +36,10 @@ func (n *node) words(prefix string) (words []string) {
     return
 }
 
-func (n *node) save(value string) (child *node) {
+func (n *node) save(value rune) (child *node) {
     child = n.children[value]
     if child == nil {
-        child = newNode(string(value))
+        child = newNode(value)
         n.children[value] = child
     }
     return
@@ -50,7 +54,7 @@ func (n *node) canRemove() (can bool) {
     return
 }
 
-func (n *node) remove(child string) {
+func (n *node) remove(child rune) {
     delete(n.children, child)
 }
 
@@ -59,7 +63,7 @@ func (n *node) rangeWords(prefix string, callback func(word string, curr *node) 
         return false
     }
     for _, child := range n.children {
-        if !child.rangeWords(prefix+child.value, callback) {
+        if !child.rangeWords(prefix+child.toString(), callback) {
             return false
         }
     }

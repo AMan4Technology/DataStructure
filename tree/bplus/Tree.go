@@ -1,4 +1,4 @@
-package bplustree
+package bplus_tree
 
 import (
     "github.com/AMan4Technology/DataStructure/useful/compare"
@@ -17,7 +17,7 @@ func New(numOfSubNode, numOfLeafData int) Tree {
     }
     var (
         root     = newNode(numOfSubNode)
-        list     = doublylist.New()
+        list     = doubly_list.New()
         dataNode = newDataNode(newLeafNode(numOfLeafData))
     )
     list.Enqueue(dataNode)
@@ -28,7 +28,7 @@ func New(numOfSubNode, numOfLeafData int) Tree {
 type Tree struct {
     length   int
     root     *Node
-    dataList doublylist.List
+    dataList doubly_list.List
 }
 
 func (t Tree) Len() int {
@@ -48,7 +48,7 @@ func (t Tree) NumOfLeafData() int {
 }
 
 func (t Tree) Find(k key) (exist bool, value DataValue) {
-    var dataNode *doublylist.Node
+    var dataNode *doubly_list.Node
     for curr := t.root; curr.Len() > 0; {
         _, index := curr.Find(k)
         if curr.dataNodes != nil {
@@ -222,7 +222,7 @@ func (t Tree) Range(start, end key, callback func(k key, value DataValue) bool) 
     }
     var (
         startI, endI       int
-        startNode, endNode *doublylist.Node
+        startNode, endNode *doubly_list.Node
     )
     if start == nil {
         startNode = t.dataList.Head().Next()
@@ -266,7 +266,7 @@ func (t Tree) Range(start, end key, callback func(k key, value DataValue) bool) 
     }
 }
 
-func (t Tree) find(k key) (indexes []int, nodes []*Node, dataNode *doublylist.Node) {
+func (t Tree) find(k key) (indexes []int, nodes []*Node, dataNode *doubly_list.Node) {
     indexes = make([]int, 0, 1<<2)
     nodes = make([]*Node, 0, 1<<2)
     for curr := t.root; curr.Len() > 0; {

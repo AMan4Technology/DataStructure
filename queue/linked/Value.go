@@ -1,4 +1,4 @@
-package linkedqueue
+package linked_queue
 
 import (
     "github.com/AMan4Technology/DataStructure/useful/common"

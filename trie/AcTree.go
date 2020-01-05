@@ -1,9 +1,9 @@
 package trie
 
-import "github.com/AMan4Technology/DataStructure/queue/array"
+import array_queue "github.com/AMan4Technology/DataStructure/queue/array"
 
 func NewAc() AcTree {
-    return AcTree{Tree: &Tree{root: newNode("")}}
+    return AcTree{Tree: &Tree{root: newNode('/')}}
 }
 
 type AcTree struct {
@@ -16,7 +16,7 @@ func (t *AcTree) Match(text []rune, callback func(start, end int) bool) {
         t.BuildFailPointer()
     }
     for prev, length, i := t.root, len(text), 0; i < length; i++ {
-        for value := string(text[i]); prev != nil; prev = prev.next {
+        for value := text[i]; prev != nil; prev = prev.next {
             curr := prev.children[value]
             if curr != nil {
                 prev = curr
@@ -36,7 +36,7 @@ func (t *AcTree) Match(text []rune, callback func(start, end int) bool) {
 
 func (t *AcTree) BuildFailPointer() {
     t.root = newAcNode(t.Tree.root)
-    queue := arrayqueue.New(t.length)
+    queue := array_queue.New(t.length)
     queue.Enqueue(t.root, true)
     for count := 1; !queue.Empty(); count++ {
         for lenOfLayer, i := queue.Len(), 0; i < lenOfLayer; i++ {

@@ -1,7 +1,7 @@
 package trie
 
 func New() Tree {
-    return Tree{root: newNode("")}
+    return Tree{root: newNode('/')}
 }
 
 type Tree struct {
@@ -58,7 +58,7 @@ func (t *Tree) Save(word string) {
     }
     curr := t.root
     for _, r := range []rune(word) {
-        curr = curr.save(string(r))
+        curr = curr.save(r)
     }
     curr.isWord = true
     t.length++
@@ -119,7 +119,7 @@ func (t Tree) find(word string) (prev, curr *node) {
     }
     curr = t.root
     for _, r := range []rune(word) {
-        prev, curr = curr, curr.child(string(r))
+        prev, curr = curr, curr.child(r)
         if curr == nil {
             return
         }

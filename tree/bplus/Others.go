@@ -1,4 +1,4 @@
-package bplustree
+package bplus_tree
 
 import (
     "github.com/AMan4Technology/DataStructure/internal"
