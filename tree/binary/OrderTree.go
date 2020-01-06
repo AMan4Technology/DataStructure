@@ -58,7 +58,7 @@ func (t *OrderTree) Remove(value Value) (parent, node *Node) {
         return
     }
     if parent == nil {
-        t.Dequeue()
+        t.RemoveRoot()
         return
     }
     if node.Compare(parent) == compare.LessThan {
@@ -69,16 +69,16 @@ func (t *OrderTree) Remove(value Value) (parent, node *Node) {
     return
 }
 
-func (t *OrderTree) Dequeue() (root *Node) {
+func (t *OrderTree) RemoveRoot() (root *Node) {
     root = t.root
     rightRoot := root.Right
     if rightRoot == nil {
-        t.root = root.Left
+        t.root, root.Left = root.Left, nil
         return
     }
     parentOfLeft, left := rightRoot.LeftDFS()
     if left == nil {
-        t.root, rightRoot.Left = rightRoot, root.Left
+        t.root, rightRoot.Left, root.Left, root.Right = rightRoot, root.Left, nil, nil
         return
     }
     parentOfLeft.Left, t.root = nil, left
