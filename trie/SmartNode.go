@@ -59,6 +59,10 @@ func (n *smartNode) save(value []rune) (child *smartNode) {
     }
     child = newSmartNode(n.value[index:], n.isWord)
     n.value, n.isWord = n.value[:index], false
+    for r, node := range n.children {
+	child.children[r] = node
+	delete(n.children, r)
+    }
     n.children[child.value[0]] = child
     child = newSmartNode(value[index:], true)
     n.children[value[index]] = child
